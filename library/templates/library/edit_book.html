@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Edit Book</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f5f3ff;
+        }
+
+        .box {
+            width: 500px;
+            margin: 60px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #5b21b6;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 13px 25px;
+            background: #6d28d9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        a {
+            margin-left: 15px;
+            color: #6d28d9;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>✏️ Edit Book</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Book Title</label>
+
+        <input
+            type="text"
+            name="title"
+            value="{{ book.title }}"
+            required
+        >
+
+
+        <label>Author</label>
+
+        <input
+            type="text"
+            name="author"
+            value="{{ book.author }}"
+            required
+        >
+
+
+        <label>Category</label>
+
+        <input
+            type="text"
+            name="category"
+            value="{{ book.category }}"
+            required
+        >
+
+
+        <label>Price</label>
+
+        <input
+            type="number"
+            name="price"
+            value="{{ book.price }}"
+            step="0.01"
+            required
+        >
+
+
+        <button type="submit">
+            Save Changes
+        </button>
+
+        <a href="{% url 'book_list' %}">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

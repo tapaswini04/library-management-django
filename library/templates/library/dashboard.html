@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Library Dashboard</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f5f3ff;
+        }
+
+        nav {
+            background: #5b21b6;
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .welcome {
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            color: #6d28d9;
+        }
+
+        .number {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .actions {
+            margin-top: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 25px;
+            margin-right: 10px;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .button:hover {
+            background: #4c1d95;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<nav>
+
+    <h2>📚 Library Management</h2>
+
+    <div>
+
+        Welcome, {{ request.user.username }}
+
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+    <div class="welcome">
+
+        <h1>Dashboard</h1>
+
+        <p>
+            Manage your library books easily.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>📚 Total Books</h3>
+
+            <div class="number">
+                {{ total_books }}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>✅ Available</h3>
+
+            <div class="number">
+                {{ available_books }}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>📖 Borrowed</h3>
+
+            <div class="number">
+                {{ borrowed_books }}
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🏷️ Categories</h3>
+
+            <div class="number">
+                {{ total_categories }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card" style="margin-top:25px;">
+
+        <h3>💰 Average Book Price</h3>
+
+        <div class="number">
+            ₹{{ average_price }}
+        </div>
+
+    </div>
+
+
+    <div class="actions">
+
+        <a class="button"
+           href="{% url 'add_book' %}">
+            ➕ Add Book
+        </a>
+
+        <a class="button"
+           href="{% url 'book_list' %}">
+            📚 View Books
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

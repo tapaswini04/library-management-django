@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Book Details</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f5f3ff;
+        }
+
+        .box {
+            width: 550px;
+            margin: 70px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #5b21b6;
+        }
+
+        .row {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #6d28d9;
+        }
+
+        .available {
+            color: green;
+            font-weight: bold;
+        }
+
+        .borrowed {
+            color: red;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>📖 Book Details</h1>
+
+
+    <div class="row">
+
+        <span class="label">
+            Title:
+        </span>
+
+        {{ book.title }}
+
+    </div>
+
+
+    <div class="row">
+
+        <span class="label">
+            Author:
+        </span>
+
+        {{ book.author }}
+
+    </div>
+
+
+    <div class="row">
+
+        <span class="label">
+            Category:
+        </span>
+
+        {{ book.category }}
+
+    </div>
+
+
+    <div class="row">
+
+        <span class="label">
+            Price:
+        </span>
+
+        ₹{{ book.price }}
+
+    </div>
+
+
+    <div class="row">
+
+        <span class="label">
+            Status:
+        </span>
+
+        {% if book.is_borrowed %}
+
+            <span class="borrowed">
+                🔴 Borrowed
+            </span>
+
+        {% else %}
+
+            <span class="available">
+                🟢 Available
+            </span>
+
+        {% endif %}
+
+    </div>
+
+
+    {% if book.is_borrowed %}
+
+    <div class="row">
+
+        <span class="label">
+            Borrowed By:
+        </span>
+
+        {{ book.borrowed_by.username }}
+
+    </div>
+
+
+    <div class="row">
+
+        <span class="label">
+            Borrowed Date:
+        </span>
+
+        {{ book.borrowed_date }}
+
+    </div>
+
+    {% endif %}
+
+
+    <a href="{% url 'book_list' %}">
+        ← Back to Books
+    </a>
+
+</div>
+
+</body>
+
+</html>

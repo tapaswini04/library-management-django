@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Library Signup</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #5b21b6;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #6d28d9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4c1d95;
+        }
+
+        a {
+            color: #6d28d9;
+        }
+
+        .bottom {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>📚 Create Account</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Sign Up
+        </button>
+
+    </form>
+
+    <div class="bottom">
+
+        Already have an account?
+
+        <a href="{% url 'login' %}">
+            Login
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
