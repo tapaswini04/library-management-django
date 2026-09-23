@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$6!%w9-g3^!)1(1+ke!*n&7of_(iy0tbw9ph959++bvz+gbnn-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -52,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'libraryproject.urls'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 TEMPLATES = [
     {
